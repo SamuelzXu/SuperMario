@@ -2,3 +2,6 @@ ENEMIES
 goomba,20,20
 goomba,30,30
 goomba,40,40
+
+POWERUPS
+invincibility,

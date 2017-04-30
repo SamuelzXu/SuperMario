@@ -15,13 +15,14 @@ import java.util.*;
 public class Level {
     public static SpriteBatch batch;
     public static Texture bg,cbg;
-    public static int posx, posy;
+    public static int mapx,mapy;
     public static ArrayList<Enemy> enemies = new ArrayList<Enemy>();
+    public final int GRAV=-4;
 
     public Level(int lv, SpriteBatch batch){
         this.batch = batch;
-        bg = new Texture("level"+lv+".jpg");
-        cbg = new Texture("clevel"+lv+".jpg");
+        bg = new Texture("level"+lv+".png");
+        cbg = new Texture("clevel"+lv+".png");
         try {
             //read in data file for level
             FileInputStream fis = new FileInputStream("level"+lv+".txt");
@@ -33,7 +34,7 @@ public class Level {
                 for (int i=0;i<n;i++){
                     String[] line = br.readLine().split(",");
                     String e = line[0];
-                    if(e.equals("goomba")){
+                    if(e.equals("goomba")){//goombas
                         enemies.add(new Goomba(new Coord(line[1],line[2]),Enemy.GOOMBA,batch));
                     }
                 }
@@ -43,13 +44,22 @@ public class Level {
         }
     }
 
+    public void update(){
+
+    }
+
     public void draw(){
         drawEnemies();
+        drawMap();
     }
 
     private void drawEnemies(){
         for (Enemy e:enemies){
 
         }
+    }
+
+    private void drawMap(){
+
     }
 }

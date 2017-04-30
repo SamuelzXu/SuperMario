@@ -8,11 +8,16 @@ import java.util.*;
  * Created by SamuelzXu on 2017-04-29.
  */
 public class Game {
-    public static Level level;
-    public static SpriteBatch batch;
+    private static Level level;
+    private static SpriteBatch batch;
+    private static Player player;
     public Game(SpriteBatch batch){
         startLevel(1);
         this.batch = batch;
+        player = new Player();
+    }
+    public void update(){
+        level.update();
     }
     public void render(){
         level.draw();
@@ -20,4 +25,11 @@ public class Game {
     public void startLevel(int lv){
         level = new Level(lv,batch);
     }
+    public void movePlayer(int dir){
+        player.move(dir);
+    }
+    public void jumpPlayer(){
+        player.jump();
+    }
+
 }
